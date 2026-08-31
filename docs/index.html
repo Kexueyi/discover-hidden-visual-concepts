@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Discovering Hidden Visual Concepts in Infant Learning - CVPR 2025</title>
+    <link rel="canonical" href="https://kexueyi.github.io/discover-hidden-visual-concepts/">
+    <meta property="og:url" content="https://kexueyi.github.io/discover-hidden-visual-concepts/">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./static/images/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="./static/images/favicon.png">
+    <link rel="apple-touch-icon" href="./static/images/favicon.png">
+    
+    <!-- Fonts - Updated to match transformer-circuits style -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
+    
+    <!-- Minimal Bulma CSS - Only used classes -->
+    <link rel="stylesheet" href="./static/css/bulma-minimal.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="./static/css/style.css?v=20250612-1925">
+    <link rel="stylesheet" href="./static/css/citations.css?v=20250612-1925">
+</head>
+<body>
+    <!-- Top Navigation Bar (appears on scroll) -->
+    <nav class="top-nav" id="top-nav">
+        <div class="top-nav-container">
+            <ul class="top-nav-links">
+                <li><a href="#research-question" data-section="research-question">Motivation</a></li>
+                <li><a href="#contributions" data-section="contributions">Contributions</a></li>
+                <li><a href="#contributions-1" data-section="contributions-1">1. Visual Beyond</a></li>
+                <li><a href="#contributions-2" data-section="contributions-2">2. Neuron Classifier</a></li>
+                <li><a href="#contributions-3" data-section="contributions-3">3. Representation</a></li>
+                <li><a href="#bibtex" data-section="bibtex">BibTeX</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <div class="glass-container">
+                            <h1 class="publication-title">
+                                Discovering Hidden Visual Concepts Beyond Linguistic Input in Infant Learning
+                            </h1>
+                            <div class="publication-venue">
+                                CVPR 2025 
+                            </div>
+                            <div class="publication-authors">
+                                <span class="author-block">
+                                    <a href="https://kexueyi.github.io">Xueyi Ke</a><sup>1</sup>,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://hellosatoshi.github.io">Satoshi Tsutsui</a><sup>1</sup>,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://yayzhang.github.io/mypage/">Yayun Zhang</a><sup>2</sup>,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://personal.ntu.edu.sg/bihan.wen/">Bihan Wen</a><sup>1</sup>
+                                </span>
+                            </div>
+                            <div class="publication-authors">
+                                <span class="author-block"><sup>1</sup>Nanyang Technological University</span>
+                                <span class="author-block"><sup>2</sup>The Max Planck Institute for Psycholinguistics</span>
+                            </div>
+
+                            
+                            <div class="publication-links">
+                                <span class="link-block">
+                                    <a href="https://openaccess.thecvf.com/content/CVPR2025/html/Ke_Discovering_Hidden_Visual_Concepts_Beyond_Linguistic_Input_in_Infant_Learning_CVPR_2025_paper.html" class="button is-normal is-rounded">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/abs/2501.05205" class="button is-normal is-rounded">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href="https://github.com/Kexueyi/discover-hidden-visual-concepts" class="button is-normal is-rounded">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href="./resources/poster_infant_cvpr25.pdf" class="button is-normal is-rounded">
+                                        <span class="icon">
+                                            <i class="far fa-images"></i>
+                                        </span>
+                                        <span>Poster</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Question Section -->
+    <section class="section" id="research-question">
+        <div class="container is-fullhd">
+            <div class="content-section fade-in fade-in-on-scroll">
+                <h2 class="section-title">Motivation</h2>
+                <div class="research-question-content">
+                    <div class="comparison-container">
+                        <div class="model-comparison-box">
+                            <img src="static/images/comp_model.png" alt="Computational Model">
+                            <h4>Computational Model (CVCL)<span class="citation" data-ref="vong2024" style="font-size: 0.7em;">[1]</span> </h4>
+                            <p>
+                                A multimodality model trained on infant daily experience.
+                            </p>
+                        </div>
+                        
+                        <div class="vs-connector">
+                            <div class="vs-text">↔</div>
+                        </div>
+                        
+                        <div class="model-comparison-box">
+                            <img src="static/images/bio_infant.png" alt="Biological Infant">
+                            <h4>Biological Infant</h4>
+                            <p>
+                                Sequential visual and language development of infants.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="research-question-highlight">
+                        <h3 class="research-question-title">✨ Our Research Question</h3>
+                        <div class="question-content">
+                            <p class="research-question-text">
+                                When a multimodality model, trained on infant daily experience, will its vision encoder develop representations beyond its linguistic input, <b>like real infant</b>?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contributions Section -->
+    <section class="section" id="contributions">
+        <div class="container is-max-desktop">
+            <div class="content-section fade-in fade-in-on-scroll">
+                <h2 class="section-title">Key Contributions</h2>
+                <div class="contributions-content">
+                    <div class="columns is-multiline">
+                        <div class="column is-12">
+                            <div class="contribution-card contribution-1" onclick="scrollToSection('contributions-1')">
+                                <div class="contribution-number">1</div>
+                                <div class="contribution-content">
+                                    <h4>Visual Development Beyond Text</h4>
+                                    <p>
+                                        Computational models' visual representation develops beyond linguistic input, similar to <b>real infants</b>.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="column is-12">
+                            <div class="contribution-card contribution-2" onclick="scrollToSection('contributions-2')">
+                                <div class="contribution-number">2</div>
+                                <div class="contribution-content">
+                                    <h4>Single Neuron Can Classify Images in Training-Free Manner</h4>
+                                    <p>
+                                        Leveraging explainable techniques, neurons in representation result in a strong <b>training-free</b> classifier.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="column is-12">
+                            <div class="contribution-card contribution-3" onclick="scrollToSection('contributions-3')">
+                                <div class="contribution-number">3</div>
+                                <div class="contribution-content">
+                                    <h4>Broadly-Trained Model v.s. Infant Model</h4>
+                                    <p>
+                                        CLIP/ResNet have <b>richer</b> high-level representations while <b>similar</b> to the infant model in the low-level.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contribution 1: Visual Development Beyond Text -->
+    <section class="section" id="contributions-1">
+        <div class="container is-max-desktop">
+            <div class="content-section fade-in fade-in-on-scroll">
+                <h2 class="section-title">1. Visual Development Beyond Text</h2>
+                <div class="contributions-content">
+                    <div class="columns is-multiline">
+                        <div class="column is-12">
+                            <div class="contribution-card contribution-1">
+                                <!-- <div class="contribution-number">1</div> -->
+                                <div class="contribution-content">
+                                    <h4>Key Finding</h4>
+                                    <p>
+                                        Infant model's visual representations develop beyond linguistic input, similar to <b>real infants</b>.
+                                        Through 'neuron labeling', we identified specific neurons inside the infant model's vision encoder that hide visual concepts are <b>not presented</b>  
+                                        in the model's training vocabulary.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- <div class="column is-6">
+                            <div class="contribution-card">
+                                <div class="contribution-content">
+                                    <h4>Method</h4> -->
+                                    <p>
+                                        We leverage CLIP-Dissect <span class="citation" data-ref="oikarinen2023" style="font-size: 0.7em;">[2]</span> to 'label' each neuron with corresponding semantic concepts, thus discovering many visual concepts.
+
+                                        These concepts are categorized as <strong>in-vocabulary</strong> or <strong>out-of-vocabulary</strong> based on whether they appeared in the infant's linguistic input or not.
+
+                                        Many <em>out-of-vocabulary</em> visual concepts emerge in specific neurons, demonstrating visual learning beyond linguistic supervision.
+                                    </p>
+                                    
+                                    <div class="method-figure">
+                                        <div class="columns is-multiline">
+                                            <div class="column is-6">
+                                                <div class="figure-container" style="text-align: center;">
+                                                    <img src="./static/images/clip-dissect.png" alt="CLIP-Dissect Method" style="width: 100%; height: auto;">
+                                                    <p class="figure-caption">Neuron Labeling Vision Encoder (e.g. This neuron is sensitve to 'rug' visual concept)</p>
+                                                </div>
+                                            </div>
+                                            <div class="column is-6">
+                                                <div class="figure-container" style="text-align: center;">
+                                                    <img src="./static/images/iv_oov.png" alt="In-vocabulary vs Out-of-vocabulary Concepts" style="width: 85%; height: auto;">
+                                                    <p class="figure-caption">In-vocabulary and Out-of-vocabulary</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                        
+                        <div class="column is-12">
+                            <div class="contribution-card">
+                                <div class="contribution-content">
+                                    <h4 style="text-align: center;">AoA Ranking of Discovered Concepts in Infant Model's Representation</h4>
+                                                                        <p>
+                                        From a cognitive perspective, we rate concepts using <strong>Age of Acquisition (AoA)</strong> <span class="citation" data-ref="kuperman2012" style="font-size: 0.7em;">[3]</span>, estimating when these concepts will be acquired (e.g., simple patterns like "ball" are acquired earlier, while more complex concepts like "calculator" are acquired later).
+                                    </p>
+                        
+                                    <div class="method-figure">
+                                        <div class="figure-container" style="text-align: center;">
+                                            <img src="./static/images/AoA.jpg" alt="AoA Analysis" style="width: 80%; height: auto;">
+                                            <p class="figure-caption">
+                                                Complex patterns in out-of-vocabulary concepts suggest visual learning beyond text supervision.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contribution 2: Training-Free Neuron-Based Classification -->
+    <section class="section" id="contributions-2">
+        <div class="container is-max-desktop">
+            <div class="content-section fade-in fade-in-on-scroll">
+                <h2 class="section-title">2. Training-Free Neuron-Based Classification</h2>
+                <div class="contributions-content">
+                    <div class="columns is-multiline">
+                        <div class="column is-12">
+                            <div class="contribution-card contribution-2">
+                                <div class="contribution-content">
+                                    <h4>Key Finding</h4>
+                                    <p>
+                                        We leverage neurons discovered from the infant model's representation to develop a training-free classification framework 
+                                        that significantly improves performance. Our approach demonstrates that single neurons can effectively classify images without 
+                                        additional training, revealing the rich representational structure learned by the infant model through discovered visual concepts.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+
+                        <div class="column is-12">
+                            <div class="contribution-card">
+                                <div class="contribution-content">
+                                    <h4>Training-Free Classification Framework</h4>
+                                    <p>
+                                        Our training-free neuron-based classification framework leverages discovered visual concepts to enable 
+                                        image classification without additional training. 
+                                    </p>
+                                    
+                                    <div class="method-figure">
+                                        <div class="figure-container">
+                                            <img src="static/images/neuron_classifier.jpg" alt="Neuron classifier">
+                                            <p class="figure-caption">Overview of our training-free neuron-based classification framework.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="column is-12">
+                            <div class="contribution-card">
+                                <div class="contribution-content">
+                                    <h4>Classification Performance Results</h4>
+
+                                    
+                                    <p>
+                                        Our <strong>NeuronClassifier</strong> framework leverages neurons discovered in the representation to enable 
+                                        broader recognition capabilities, particularly demonstrating significant improvements in CVCL performance 
+                                        (in  <strong>bold</strong>). 
+                                    </p>
+                                    
+                                    <div class="method-figure">
+                                        <div class="figure-container" style="text-align: center;">
+                                            <img src="static/images/resutls_table.png" alt="Neuron classifier tbl results" style="width: 80%; height: auto;">
+                                            <p class="figure-caption">
+                                “Vanilla” refers to classification based on image-text similarity. “❌” denotes cases
+                                                where direct classification is not possible due to missing text encoder or need fine-tuning. “All” represents the
+                                                combined performance on both in- and out-of-vocabulary.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contribution 3: Representation Analysis -->
+    <section class="section" id="contributions-3">
+        <div class="container is-max-desktop">
+            <div class="content-section fade-in fade-in-on-scroll">
+                <h2 class="section-title">3. Representation Analysis</h2>
+                <div class="contributions-content">
+                    <div class="columns is-multiline">
+                        <div class="column is-12">
+                            <div class="contribution-card contribution-3">
+                                <div class="contribution-content">
+                                    <h4>Key Finding</h4>
+                                    <p>
+                                        Our analysis reveals that general representations (CLIP, ImageNet models) 
+                                        exhibit significant differences from the infant model (CVCL) in the final layers (abstract concepts) while 
+                                        sharing similar representations in lower layers (simple patterns).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="column is-12">
+                            <div class="contribution-card">
+                                <div class="contribution-content">
+                                    <h4>CKA Similarity Analysis</h4>
+                                    <p>
+                                        We first employ <strong>Centered Kernel Alignment (CKA)</strong> <span class="citation" data-ref="kornblith2019" style="font-size: 0.7em;">[4]</span>  to measure layer-wise representational similarity 
+                                        between different models. Using the ImageNet validation set as input, we quantitatively analyze how similar 
+                                        the learned representations are across different architectures. The results show that CVCL exhibits similarity 
+                                        to CLIP-RN50 and ResNeXt50 in the shallow layers (lower-level features) but diverges significantly in the final 
+                                        layer (higher-level features). Notably, Layer 4 of CVCL shows very low similarity to all layers of both 
+                                        common models, suggesting unique high-level representations in the infant model.
+                                    </p>
+                                    
+                                    <div class="analysis-figure">
+                                        <img src="./static/images/cka.png" alt="CKA Matrix Analysis">
+                                        <p class="figure-caption">CKA similarity matrices comparing CVCL with CLIP-RN50 and ResNeXt50 models.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="column is-12">
+                            <div class="contribution-card">
+                                <div class="contribution-content">
+                                    <h4>Net Dissect Analysis</h4>
+                                    <p>
+                                        Next, we apply <strong>Net Dissect</strong> <span class="citation" data-ref="bau2017" style="font-size: 0.7em;">[5]</span>  to quantify the emergence of interpretable 
+                                        visual concepts across different layers. The number of unique concepts indicates the richness of encoded representation.
+                                        Our analysis reveals that neurons in deeper model layers capture increasingly complex concepts. Early layers primarily 
+                                        detect lower-level features like color and texture, while higher-level concepts such as objects and scenes emerge 
+                                        in deeper layers. CVCL exhibits fewer visual concepts than the ImageNet model, especially for higher-level 
+                                        visual concepts (e.g., objects and scenes).
+                                    </p>
+                                    
+                                    <div class="analysis-figure">
+                                        <img src="static/images/net-dissection.png" alt="Net Dissect Analysis">
+                                        <p class="figure-caption">Net Dissect Analysis showing concept emergence across different layers and models.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- BibTeX Section (moved before references) -->
+    <section class="section" id="bibtex">
+        <div class="container is-max-desktop">
+            <div class="content-section fade-in fade-in-on-scroll">
+                <h2 class="section-title">BibTeX</h2>
+                🥳 Thank you for your interest in our work! For more details, please check our paper. If our work is helpful, please consider citing the following:
+                <div class="bibtex-container">
+                    <button class="copy-button" onclick="copyBibtex()" title="Copy to clipboard">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre><code id="bibtex-code">@InProceedings{Ke_2025_CVPR,
+    author    = {Ke, Xueyi and Tsutsui, Satoshi and Zhang, Yayun and Wen, Bihan},
+    title     = {Discovering Hidden Visual Concepts Beyond Linguistic Input in Infant Learning},
+    booktitle = {Proceedings of the Computer Vision and Pattern Recognition Conference (CVPR)},
+    month     = {June},
+    year      = {2025},
+    pages     = {4343-4352}
+}</code></pre>
+                </div>
+            </div>
+            
+        </div>
+
+    </section>
+
+    <!-- References Section -->
+    <section class="references-section" id="references">
+        <div class="container is-max-desktop">
+            <h2>References</h2>
+            <div class="references-content">
+                <div class="reference-item" id="reference-vong2024">
+                    <div class="reference-id">[1]</div>
+                    <div class="back-to-text" onclick="scrollBackToText('vong2024')"></div>
+                    <p class="reference-text">
+                        Wai Keen Vong et al. <strong>"Grounded language acquisition through the eyes and ears of a single child."</strong> <em>Science</em> 383, 504-511 (2024). DOI:10.1126/science.adi1374
+                    </p>
+                </div>
+                
+                <div class="reference-item" id="reference-oikarinen2023">
+                    <div class="reference-id">[2]</div>
+                    <div class="back-to-text" onclick="scrollBackToText('oikarinen2023')"></div>
+                    <p class="reference-text">
+                        Oikarinen, Tuomas, and Tsui-Wei Weng. <strong>"CLIP-Dissect: Automatic Description of Neuron Representations in Deep Vision Networks."</strong> <em>ICLR 2023 Spotlight</em>.
+                    </p>
+                </div>
+                
+                <div class="reference-item" id="reference-kuperman2012">
+                    <div class="reference-id">[3]</div>
+                    <div class="back-to-text" onclick="scrollBackToText('kuperman2012')"></div>
+                    <p class="reference-text">
+                        Kuperman, V., Stadthagen-Gonzalez, H., & Brysbaert, M. (2012). <strong>"Age-of-acquisition ratings for 30,000 English words."</strong> <em>Behavior research methods</em>, 44, 978-990.
+                    </p>
+                </div>
+
+                <div class="reference-item" id="reference-kornblith2019">
+                    <div class="reference-id">[4]</div>
+                    <div class="back-to-text" onclick="scrollBackToText('kornblith2019')"></div>
+                    <p class="reference-text">
+                        Kornblith, Simon, Norouzi, Mohammad, Lee, Honglak, & Hinton, Geoffrey. <strong>"Similarity of neural network representations revisited."</strong> <em>International Conference on Machine Learning</em>, pages 3519-3529, 2019. PMLR.
+                    </p>
+                </div>
+                <div class="reference-item" id="reference-bau2017">
+                    <div class="reference-id">[5]</div>
+                    <div class="back-to-text" onclick="scrollBackToText('bau2017')"></div>
+                    <p class="reference-text">
+                        Bau, David, Zhou, Bolei, Khosla, Aditya, Oliva, Aude, & Torralba, Antonio. <strong>"Network Dissection: Quantifying Interpretability of Deep Visual Representations."</strong> <em>Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</em>, July 2017.
+                    </p>
+                </div>
+
+
+            </div>
+            
+            <!-- Copyright section -->
+            <div class="copyright-section">
+                <!-- <p>
+                    This website is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+                </p> -->
+                <p>
+                    © 2025 Xueyi Ke. All rights reserved.
+                </p>
+                <div class="attribution">
+                    <p>
+                        Design elements inspired by <a href="https://transformer-circuits.pub/" target="_blank">Transformer Circuits Thread</a> and <a href="https://nerfies.github.io/" target="_blank">Nerfies</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal for zoom functionality -->
+    <div id="imageModal" class="image-modal">
+        <span class="image-modal-close">&times;</span>
+        <img class="image-modal-content" id="modalImg">
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./static/js/fontawesome.all.min.js"></script>
+    
+    <script>
+        // Top navigation activation and section highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.top-nav a[data-section]');
+        
+        function updateActiveNavLink() {
+            const scrollPosition = window.scrollY + 100;
+            
+            let currentSection = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-section') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', function() {
+            const topNav = document.getElementById('top-nav');
+            if (window.scrollY > 200) {
+                topNav.classList.add('active');
+            } else {
+                topNav.classList.remove('active');
+            }
+            
+            updateActiveNavLink();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll-triggered animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Citation navigation functions
+        function scrollToReference(referenceId) {
+            const element = document.getElementById(referenceId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                element.classList.add('highlight');
+                setTimeout(() => {
+                    element.classList.remove('highlight');
+                }, 2000);
+            }
+        }
+
+        function scrollBackToText(citationRef) {
+            const citation = document.querySelector(`[data-ref="${citationRef}"]`);
+            if (citation) {
+                citation.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                citation.classList.add('highlight');
+                setTimeout(() => {
+                    citation.classList.remove('highlight');
+                }, 2000);
+            }
+        }
+
+        // Enhanced citation handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const citations = document.querySelectorAll('.citation');
+            
+            citations.forEach((citation) => {
+                citation.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const referenceId = 'reference-' + citation.getAttribute('data-ref');
+                    scrollToReference(referenceId);
+                });
+
+                // Return icon click handlers
+                const returnIcon = citation.querySelector('.return-icon');
+                if (returnIcon) {
+                    returnIcon.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const ref = citation.getAttribute('data-ref');
+                        scrollToReference('reference-' + ref);
+                    });
+                }
+            });
+        });
+
+        // Image modal functionality for all figures
+        const imageModal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImg");
+        
+        // Select all clickable images (comparison images and all figure images)
+        const clickableImages = document.querySelectorAll(".model-comparison-box img, .figure-container img, .method-figure img, .analysis-figure img");
+
+        clickableImages.forEach(img => {
+            img.addEventListener("click", function() {
+                imageModal.classList.add("show");
+                modalImg.src = this.src;
+            });
+        });
+
+        const closeModal = document.querySelector(".image-modal-close");
+        closeModal.addEventListener("click", function() {
+            imageModal.classList.remove("show");
+        });
+
+        // Close modal when clicking outside of the image
+        window.addEventListener("click", function(event) {
+            if (event.target === imageModal) {
+                imageModal.classList.remove("show");
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                imageModal.classList.remove("show");
+            }
+        });
+
+        // Contribution card click handlers with scroll to sections
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Add clicked animation effect
+                const card = event.currentTarget;
+                card.classList.add('clicked');
+                setTimeout(() => {
+                    card.classList.remove('clicked');
+                }, 600);
+            }
+        }
+
+        // Method section toggle functionality
+        // function toggleMethodSection(sectionId) {
+        //     const details = document.getElementById(sectionId);
+        //     const icon = document.getElementById('icon-' + sectionId);
+            
+        //     if (details.style.display === 'none' || details.style.display === '') {
+        //         details.style.display = 'block';
+        //         icon.classList.add('rotated');
+        //     } else {
+        //         details.style.display = 'none';
+        //         icon.classList.remove('rotated');
+        //     }
+        // }
+
+        // Result section toggle functionality
+        // function toggleResultSection(sectionId) {
+        //     const details = document.getElementById(sectionId);
+        //     const icon = document.getElementById('icon-' + sectionId);
+            
+        //     if (details.style.display === 'none' || details.style.display === '') {
+        //         details.style.display = 'block';
+        //         icon.classList.add('rotated');
+        //     } else {
+        //         details.style.display = 'none';
+        //         icon.classList.remove('rotated');
+        //     }
+        // }
+
+        // // Initialize first method section as expanded
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const firstMethodDetails = document.getElementById('method-1');
+        //     const firstMethodIcon = document.getElementById('icon-method-1');
+        //     const firstResultDetails = document.getElementById('result-1');
+        //     const firstResultIcon = document.getElementById('icon-result-1');
+            
+        //     if (firstMethodDetails) {
+        //         firstMethodDetails.style.display = 'block';
+        //         firstMethodIcon.classList.add('rotated');
+        //     }
+            
+        //     if (firstResultDetails) {
+        //         firstResultDetails.style.display = 'block';
+        //         firstResultIcon.classList.add('rotated');
+        //     }
+        // });
+
+        // BibTeX copy functionality
+        function copyBibtex() {
+            const bibtexElement = document.getElementById('bibtex-code');
+            const copyButton = document.querySelector('.copy-button');
+            const bibtexText = bibtexElement.textContent;
+
+            navigator.clipboard.writeText(bibtexText).then(function() {
+                // Success feedback
+                const originalHTML = copyButton.innerHTML;
+                copyButton.classList.add('copied');
+                copyButton.innerHTML = '<i class="fas fa-check"></i>';
+                
+                setTimeout(function() {
+                    copyButton.classList.remove('copied');
+                    copyButton.innerHTML = originalHTML;
+                }, 2000);
+            }).catch(function(err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = bibtexText;
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                
+                try {
+                    document.execCommand('copy');
+                    const originalHTML = copyButton.innerHTML;
+                    copyButton.classList.add('copied');
+                    copyButton.innerHTML = '<i class="fas fa-check"></i>';
+                    
+                    setTimeout(function() {
+                        copyButton.classList.remove('copied');
+                        copyButton.innerHTML = originalHTML;
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                }
+                
+                document.body.removeChild(textArea);
+            });
+        }
+    </script>
+</body>
+</html>

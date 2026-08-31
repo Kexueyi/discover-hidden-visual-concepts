@@ -1,0 +1,160 @@
+/* Citation Styles */
+span.citation {
+    display: inline !important;
+    position: relative !important;
+    color: #3273dc !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+}
+
+span.citation:hover {
+    color: #1d5bb8 !important;
+}
+
+/* Hide citation hover content by default */
+.citation-hover {
+    position: fixed !important; /* 使用fixed定位避免被父容器影响 */
+    background: white !important;
+    border: 1px solid #ddd !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    padding: 12px 16px !important;
+    min-width: 300px !important;
+    max-width: 400px !important;
+    z-index: 99999 !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    white-space: normal !important;
+    
+    /* Hide by default */
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Show on hover with JavaScript positioning */
+span.citation:hover .citation-hover {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+/* References Section - styled as page footer appendix */
+.references-section {
+    background: #f5f5f5;
+    padding: 2rem 0 1rem 0;
+    margin-top: 2rem;
+    border-top: 1px solid #ddd;
+}
+
+.references-section h2 {
+    color: #888;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    font-weight: 400;
+}
+
+.reference-item {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0.5rem 0;
+    margin-bottom: 0.3rem;
+    box-shadow: none;
+    position: relative;
+    transition: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.reference-item:hover {
+    box-shadow: none;
+}
+
+.reference-item .reference-id {
+    position: static;
+    display: inline-block;
+    background: transparent;
+    color: #888;
+    padding: 0;
+    border-radius: 0;
+    font-size: 13px;
+    font-weight: 500;
+    margin-right: 0.5rem;
+}
+
+.reference-text {
+    margin: 0;
+    line-height: 1.5;
+    color: #888;
+    font-size: 0.9rem;
+    display: inline;
+}
+
+.reference-text strong {
+    color: #777;
+}
+
+/* Back to text icon - positioned just above the bottom border */
+.back-to-text {
+    position: absolute;
+    bottom: 2px;
+    right: 6px;
+    width: 14px;
+    height: 14px;
+    background: #888;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-text:hover {
+    background: #555;
+}
+
+.back-to-text::after {
+    content: '↑';
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    display: block;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Highlight animation for referenced citation */
+.citation.highlighted {
+    background-color: yellow;
+    animation: highlight-fade 2s ease-out;
+}
+
+@keyframes highlight-fade {
+    0% { background-color: yellow; }
+    100% { background-color: transparent; }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .citation-hover {
+        min-width: 250px;
+        max-width: 90vw;
+        left: 10px;
+        transform: none;
+    }
+    
+    .citation-hover::after,
+    .citation-hover::before {
+        left: 30px;
+        transform: none;
+    }
+}

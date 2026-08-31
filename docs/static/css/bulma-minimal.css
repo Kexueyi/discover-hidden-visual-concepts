@@ -1,0 +1,153 @@
+/* Minimal Bulma CSS - Only used classes */
+
+/* Container */
+.container {
+    flex-grow: 1;
+    margin: 0 auto;
+    position: relative;
+    width: auto;
+}
+
+.container.is-max-desktop {
+    max-width: 1152px;
+}
+
+/* Columns and Column Layout */
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+    margin-top: -0.75rem;
+}
+
+.columns.is-multiline {
+    flex-wrap: wrap;
+}
+
+.columns.is-centered {
+    justify-content: center;
+}
+
+.column {
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 0.75rem;
+}
+
+.column.is-12 {
+    flex: none;
+    width: 100%;
+}
+
+.column.has-text-centered {
+    text-align: center;
+}
+
+/* Section */
+.section {
+    padding: 3rem 1.5rem;
+}
+
+/* Hero */
+.hero {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hero-body {
+    flex-grow: 1;
+    flex-shrink: 0;
+    padding: 3rem 1.5rem;
+}
+
+/* Button */
+.button {
+    background-color: white;
+    border-color: #dbdbdb;
+    border-width: 1px;
+    color: #363636;
+    cursor: pointer;
+    justify-content: center;
+    padding-bottom: calc(0.5em - 1px);
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: calc(0.5em - 1px);
+    text-align: center;
+    white-space: nowrap;
+    -webkit-appearance: none;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: none;
+    display: inline-flex;
+    font-size: 1rem;
+    height: 2.5em;
+    line-height: 1.5;
+    position: relative;
+    vertical-align: top;
+    text-decoration: none;
+}
+
+.button.is-normal {
+    font-size: 1rem;
+}
+
+.button.is-rounded {
+    border-radius: 290486px;
+    padding-left: calc(1em + 0.25em);
+    padding-right: calc(1em + 0.25em);
+}
+
+/* Text Alignment */
+.has-text-centered {
+    text-align: center !important;
+}
+
+/* Responsive Design */
+@media screen and (min-width: 1024px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media screen and (min-width: 1216px) {
+    .container {
+        max-width: 1152px;
+    }
+    
+    .container.is-max-desktop {
+        max-width: 1152px;
+    }
+}
+
+@media screen and (min-width: 1408px) {
+    .container {
+        max-width: 1344px;
+    }
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+    .columns {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+    }
+    
+    .column {
+        padding: 0.75rem;
+    }
+    
+    .section {
+        padding: 1.5rem;
+    }
+    
+    .hero-body {
+        padding: 1.5rem;
+    }
+}
